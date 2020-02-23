@@ -1,0 +1,32 @@
+package ua.kpi.exceptions;
+
+public class Main8 {
+
+    public static void main(String[] args) {
+        System.err.println("#1.in");
+        f(); // создаем фрейм, помещаем в стек, передаем в него управление
+        System.err.println("#1.out"); // пропускаем
+    }
+
+    public static void f() {
+        System.err.println(".   #2.in");
+        g(); // создаем фрейм, помещаем в стек, передаем в него управление
+        System.err.println(".   #2.out"); // пропускаем
+    }
+
+    public static void g() {
+        System.err.println(".   .   #3.in");
+        h(); // создаем фрейм, помещаем в стек, передаем в него управление
+        System.err.println(".   .   #3.out"); // пропускаем
+    }
+
+    public static void h() {
+        System.err.println(".   .   .   #4.in");
+        if (true) {
+            System.err.println(".   .   .   #4.THROW");
+            throw new Error(); // выходим со всей пачки фреймов ("раскрутка
+            // стека") по 'throw'
+        }
+        System.err.println(".   .   .   #4.out"); // пропускаем
+    }
+}
